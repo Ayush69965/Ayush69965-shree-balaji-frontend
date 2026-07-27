@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, .font-head {
+    font-family: "Outfit", sans-serif;
+}
+
+@layer base {
+    :root {
+        --background: 210 40% 98%;
+        --foreground: 222 47% 11%;
+        --card: 0 0% 100%;
+        --card-foreground: 222 47% 11%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222 47% 11%;
+        --primary: 205 85% 27%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 208 100% 94%;
+        --secondary-foreground: 205 85% 27%;
+        --muted: 210 40% 96%;
+        --muted-foreground: 215 16% 47%;
+        --accent: 160 84% 39%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 214 32% 91%;
+        --input: 214 32% 91%;
+        --ring: 205 85% 27%;
+        --radius: 0.85rem;
+    }
+    .dark {
+        --background: 222 47% 11%;
+        --foreground: 210 40% 98%;
+        --card: 217 33% 17%;
+        --card-foreground: 210 40% 98%;
+        --popover: 217 33% 17%;
+        --popover-foreground: 210 40% 98%;
+        --primary: 205 90% 55%;
+        --primary-foreground: 222 47% 11%;
+        --secondary: 217 33% 20%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 217 33% 20%;
+        --muted-foreground: 215 20% 65%;
+        --accent: 160 84% 45%;
+        --accent-foreground: 222 47% 11%;
+        --destructive: 0 63% 45%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 217 33% 24%;
+        --input: 217 33% 24%;
+        --ring: 205 90% 55%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+::selection {
+    background: hsl(205 85% 27% / 0.15);
+    color: hsl(205 85% 27%);
+}
+
+.dark ::selection {
+    background: hsl(205 90% 55% / 0.25);
+    color: hsl(210 40% 98%);
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: hsl(215 16% 70%); border-radius: 999px; }
+.dark ::-webkit-scrollbar-thumb { background: hsl(217 33% 30%); }
+
+.glass {
+    backdrop-filter: blur(18px);
+    background: hsl(0 0% 100% / 0.75);
+    border: 1px solid hsl(214 32% 91% / 0.6);
+}
+.dark .glass {
+    background: hsl(222 47% 11% / 0.7);
+    border: 1px solid hsl(217 33% 24% / 0.6);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+.grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
