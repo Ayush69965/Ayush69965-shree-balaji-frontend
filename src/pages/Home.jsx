@@ -33,7 +33,9 @@ export default function Home() {
     const { data: faqs = [] } = useCollection("faqs");
     const { data: blogs = [] } = useCollection("blogs");
 
-    const popularTests = tests.filter((t) => t.popular).slice(0, 6);
+    const popularTests = Array.isArray(tests)
+  ? tests.filter((t) => t.popular).slice(0, 6)
+  : [];
     const wa = (c?.whatsapp || "").replace(/[^0-9]/g, "");
     const phone = (c?.phone || "").replace(/[^0-9+]/g, "");
 
